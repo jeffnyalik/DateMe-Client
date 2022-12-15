@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "dating-client"
+  "cli": {
+    "analytics": "2b478f9c-d106-4be1-afdc-93734a7c204b"
+  }
 }

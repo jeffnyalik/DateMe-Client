@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavComponent implements OnInit {
   model:any = {};
-  constructor(private authService:AuthService, private _snackbar:MatSnackBar) { }
+  constructor(public authService:AuthService, private _snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -31,9 +31,7 @@ export class NavComponent implements OnInit {
   }
 
   loggedIn(){
-    const token = localStorage.getItem('token');
-    return !! token;
-
+    return this.authService.loggedIn();
   }
   loggedOut(){
     localStorage.removeItem('token');

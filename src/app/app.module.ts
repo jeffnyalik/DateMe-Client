@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './error.inceptor';
@@ -28,7 +30,8 @@ import { AlertifyService } from './services/alerts/alertify.service';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    BsDropdownModule.forRoot({})
   ],
   providers: [
     AlertifyService,

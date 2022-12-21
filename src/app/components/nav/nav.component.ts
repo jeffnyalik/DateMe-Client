@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -11,7 +12,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavComponent implements OnInit {
   model:any = {};
-  constructor(public authService:AuthService, private _snackbar:MatSnackBar) { }
+  constructor(public authService:AuthService,
+     private _snackbar:MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,8 @@ export class NavComponent implements OnInit {
         panelClass: ['error-snackbar']
       });
       console.log(error);
+    }, () =>{
+      this.router.navigate(['/members']);
     });
   }
 
@@ -35,8 +39,8 @@ export class NavComponent implements OnInit {
   }
   loggedOut(){
     localStorage.removeItem('token');
-
     console.log("Logged Out successfully");
+    this.router.navigate(['/home']);
   }
 
 

@@ -11,7 +11,8 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = environment.baseUrl
+  // baseUrl =  environment.baseUrl
+  baseUrl = "http://localhost:7000/api/"
   LOGIN_URL="auths/user-login";
   REGISTER_URL="auths/user-register";
   jwtHelper = new JwtHelperService();

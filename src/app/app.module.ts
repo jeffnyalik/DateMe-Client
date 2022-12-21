@@ -15,6 +15,9 @@ import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertifyService } from './services/alerts/alertify.service';
+import { MessagesComponent } from './components/messages/messages.component';
+import { ListsComponent } from './components/lists/lists.component';
+import { MemberListsComponent } from './components/member-lists/member-lists.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { AlertifyService } from './services/alerts/alertify.service';
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    MessagesComponent,
+    ListsComponent,
+    MemberListsComponent
   ],
   imports: [
     BrowserModule,

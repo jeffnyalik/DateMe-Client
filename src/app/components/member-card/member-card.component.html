@@ -2,7 +2,12 @@
   <div class="row">
     <div class="card mb-3 p-2" *ngFor="let user of users">
       <div class="card-img-wrapper">
-        <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image cap" style="width: 200px;">
+        <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image cap" style="width: 150px;">
+        <ul class="list-inline member-icons animate text-center">
+          <li class="list-inline-item"><button class="btn btn-primary"><i class="fa fa-user"></i></button></li>
+          <li class="list-inline-item"><button class="btn btn-primary"><i class="fa fa-user"></i></button></li>
+          <li class="list-inline-item"><button class="btn btn-primary"><i class="fa fa-user"></i></button></li>
+        </ul>
       </div>
       <div class="card-body p-2">
         <h6 class="text-center mb-1">

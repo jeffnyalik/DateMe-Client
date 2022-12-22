@@ -18,6 +18,8 @@ import { AlertifyService } from './services/alerts/alertify.service';
 import { MessagesComponent } from './components/messages/messages.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MemberListsComponent } from './components/member-lists/member-lists.component';
+import { UsersComponent } from './components/users/users.component';
+import { MemberCardComponent } from './components/member-card/member-card.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { MemberListsComponent } from './components/member-lists/member-lists.com
     RegisterComponent,
     MessagesComponent,
     ListsComponent,
-    MemberListsComponent
+    MemberListsComponent,
+    UsersComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserModule,

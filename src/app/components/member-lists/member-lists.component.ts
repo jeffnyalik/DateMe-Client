@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../services/users/users.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../../_models/user';
 
 @Component({
   selector: 'app-member-lists',
@@ -6,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./member-lists.component.css']
 })
 export class MemberListsComponent implements OnInit {
+  constructor(
 
-  constructor() { }
+  ) { }
 
   ngOnInit(): void {
   }

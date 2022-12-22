@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="card mb-3 p-2" *ngFor="let user of users">
+      <div class="card-img-wrapper">
+        <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image cap" style="width: 200px;">
+      </div>
+      <div class="card-body p-2">
+        <h6 class="text-center mb-1">
+          <i class="fa fa-user"></i>
+          {{user.knownAs}} {{user.age}}
+        </h6>
+        <p class="card-text text-muted text-center">{{user.city}}</p>
+      </div>
+    </div>
+  </div>
+</div>

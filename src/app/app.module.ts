@@ -5,22 +5,27 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import { JwtModule } from '@auth0/angular-jwt';
+
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './error.inceptor';
 
 import { HomeComponent } from './components/home/home.component';
+import { ListsComponent } from './components/lists/lists.component';
+import { MemberCardComponent } from './components/member-card/member-card.component';
+import { MemberDetailComponent } from './components/member-detail/member-detail.component';
+import { MemberListsComponent } from './components/member-lists/member-lists.component';
+import { MessagesComponent } from './components/messages/messages.component';
 import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AlertifyService } from './services/alerts/alertify.service';
-import { MessagesComponent } from './components/messages/messages.component';
-import { ListsComponent } from './components/lists/lists.component';
-import { MemberListsComponent } from './components/member-lists/member-lists.component';
 import { UsersComponent } from './components/users/users.component';
-import { MemberCardComponent } from './components/member-card/member-card.component';
-import { JwtModule } from '@auth0/angular-jwt';
+import { AlertifyService } from './services/alerts/alertify.service';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberListResolver } from './_resolvers/member-list.resolver';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -36,7 +41,8 @@ export function tokenGetter(){
     ListsComponent,
     MemberListsComponent,
     UsersComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +51,7 @@ export function tokenGetter(){
     FormsModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -58,7 +65,9 @@ export function tokenGetter(){
     AlertifyService,
     {
       provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
-    }
+    },
+    MemberDetailResolver,
+    MemberListResolver
   ],
   bootstrap: [AppComponent]
 })

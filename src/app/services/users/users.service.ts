@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
+
 import { User } from 'src/app/_models/user';
+
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +19,6 @@ export class UsersService {
   }
 
   getUser(id:any):Observable<User>{
-    return this.http.get<User>(this.baseUrl + "user/" + id);
+    return this.http.get<User>(this.baseUrl + "users/" + id);
   }
 }

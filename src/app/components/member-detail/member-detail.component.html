@@ -5,6 +5,10 @@
         <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user?.knownAs}}">
         <div class="card-body">
           <div>
+            <strong>Username:</strong>
+            <p>{{user.knownAs}}</p>
+          </div>
+          <div>
             <strong>Location:</strong>
             <p>{{user.city}}, {{user?.country}}</p>
           </div>
@@ -46,14 +50,14 @@
 
           <tab heading="Photos">
             <h5>Photos</h5>
-            <p>Photos</p>
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+
           </tab>
 
           <tab heading="Messages">
             <h5>Messages</h5>
             <p>Messages</p>
           </tab>
-
         </tabset>
       </div>
     </div>

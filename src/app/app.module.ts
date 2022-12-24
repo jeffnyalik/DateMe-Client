@@ -7,6 +7,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { JwtModule } from '@auth0/angular-jwt';
 
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
@@ -14,18 +16,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './error.inceptor';
 
+import { PreventUnSavedChanges } from './_guards/pervent_unsaved_changes.guard';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { HomeComponent } from './components/home/home.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MemberCardComponent } from './components/member-card/member-card.component';
 import { MemberDetailComponent } from './components/member-detail/member-detail.component';
+import { MemberEditComponent } from './components/member-edit/member-edit.component';
 import { MemberListsComponent } from './components/member-lists/member-lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { AlertifyService } from './services/alerts/alertify.service';
-import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
-import { MemberListResolver } from './_resolvers/member-list.resolver';
+
+
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -43,6 +50,8 @@ export function tokenGetter(){
     UsersComponent,
     MemberCardComponent,
     MemberDetailComponent,
+    MemberEditComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -51,6 +60,7 @@ export function tokenGetter(){
     FormsModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    NgxGalleryModule,
     TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {
@@ -67,7 +77,9 @@ export function tokenGetter(){
       provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
     },
     MemberDetailResolver,
-    MemberListResolver
+    MemberListResolver,
+    MemberEditResolver,
+    PreventUnSavedChanges
   ],
   bootstrap: [AppComponent]
 })

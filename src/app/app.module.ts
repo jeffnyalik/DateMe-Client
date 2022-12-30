@@ -14,6 +14,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
+import { FileUploadModule } from 'ng2-file-upload';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './error.inceptor';
@@ -30,10 +32,10 @@ import { MemberEditComponent } from './components/member-edit/member-edit.compon
 import { MemberListsComponent } from './components/member-lists/member-lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { NavComponent } from './components/nav/nav.component';
+import { PhotoEditorComponent } from './components/photo-editor/photo-editor.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { AlertifyService } from './services/alerts/alertify.service';
-import { PhotoEditorComponent } from './components/photo-editor/photo-editor.component';
 
 
 
@@ -67,6 +69,7 @@ export function tokenGetter(){
     MatSnackBarModule,
     NgxGalleryModule,
     MatProgressSpinnerModule,
+    FileUploadModule,
     TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { JwtModule } from '@auth0/angular-jwt';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
@@ -31,6 +33,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { AlertifyService } from './services/alerts/alertify.service';
+import { PhotoEditorComponent } from './components/photo-editor/photo-editor.component';
 
 
 
@@ -51,6 +54,8 @@ export function tokenGetter(){
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
+    PhotoEditorComponent,
+
 
   ],
   imports: [
@@ -61,6 +66,7 @@ export function tokenGetter(){
     BrowserAnimationsModule,
     MatSnackBarModule,
     NgxGalleryModule,
+    MatProgressSpinnerModule,
     TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {
@@ -71,6 +77,7 @@ export function tokenGetter(){
     }),
     BsDropdownModule.forRoot({})
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     AlertifyService,
     {

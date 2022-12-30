@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -12,8 +13,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavComponent implements OnInit {
   model:any = {};
+  mode:ProgressSpinnerMode = 'indeterminate';
   constructor(public authService:AuthService,
-     private _snackbar:MatSnackBar, private router: Router) { }
+     private _snackbar:MatSnackBar,
+     private router: Router,
+     ) { }
 
   ngOnInit(): void {
   }

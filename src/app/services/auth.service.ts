@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { map } from 'rxjs/operators';
 
+import { User } from '../_models/user';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -17,6 +18,7 @@ export class AuthService {
   REGISTER_URL="auths/user-register";
   jwtHelper = new JwtHelperService();
   decodeToken:any;
+  currentUser:User;
   constructor(private http:HttpClient) { }
 
   login(model:any){
@@ -25,7 +27,9 @@ export class AuthService {
         const user = response;
         if(user){
           localStorage.setItem("token", user.token)
+          localStorage.setItem("user", JSON.stringify(user.user));
           this.decodeToken = this.jwtHelper.decodeToken(user.token);
+          this.currentUser = user.user;
           console.log(this.decodeToken);
         }
       }))

@@ -6,3 +6,11 @@
 #loggedOut{
   cursor: pointer;
 }
+
+img{
+  max-height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  display: inline;
+}

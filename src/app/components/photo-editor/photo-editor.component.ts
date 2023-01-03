@@ -72,7 +72,10 @@ export class PhotoEditorComponent implements OnInit {
       this.currentMainPhoto = this.photos.filter(p => p.isMain === true)[0];
       this.currentMainPhoto.isMain = false;
       photo.isMain = true;
-      this.getMemberPhotoChange.emit(photo.url);
+      this.authService.changeMemberPhoto(photo.url);
+      this.authService.currentUser.photoUrl = photo.url;
+      localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
+      // this.getMemberPhotoChange.emit(photo.url);
       this.snackBar.open("Main photo has been set", "", {
         duration: 4000,
         panelClass: ['success-snackbar']

@@ -14,12 +14,14 @@ import { AuthService } from '../../services/auth.service';
 export class NavComponent implements OnInit {
   model:any = {};
   mode:ProgressSpinnerMode = 'indeterminate';
+  photoUrl:string;
   constructor(public authService:AuthService,
      private _snackbar:MatSnackBar,
      private router: Router,
      ) { }
 
   ngOnInit(): void {
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl=photoUrl);
   }
   login = () =>{
       this.authService.login(this.model).subscribe(next =>{

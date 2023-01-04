@@ -3,6 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { FileUploader } from 'ng2-file-upload';
 
+import Swal from 'sweetalert2';
+
 import { Photo } from '../../_models/photo';
 import { AuthService } from '../../services/auth.service';
 import { environment } from '../../../environments/environment';
@@ -86,6 +88,38 @@ export class PhotoEditorComponent implements OnInit {
         duration: 2000,
         panelClass: ['error-snackbar']
       })
+    })
+  }
+
+  deleteUserPhoto(id:number){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      backdrop: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deletePhoto(this.authService.decodeToken.id, id).subscribe(() =>{
+          this.photos.splice(this.photos.findIndex(p => p.id == id), 1);
+          Swal.fire(
+            'Deleted!',
+            'Your image has been deleted.',
+            'success'
+          )
+        }, error =>{
+           Swal.fire(
+           {
+            icon: 'error',
+            text: 'An error has occured'
+           }
+        )
+          console.log(error);
+        })
+      }
     })
   }
 

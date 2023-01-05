@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { validateVerticalPosition } from '@angular/cdk/overlay';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,14 +12,16 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterComponent implements OnInit {
   @Input() ValuesFromHome:any;
   @Output() CancelRegister = new EventEmitter();
+  registerForm: FormGroup;
   model:any = {};
   constructor(private authService:AuthService) { }
   register(){
-    this.authService.register(this.model).subscribe((res) =>{
-      console.log("Users have been registered successfully")
-    }, error=>{
-      console.log(error);
-    });
+    console.log(this.registerForm.value);
+    // this.authService.register(this.model).subscribe((res) =>{
+    //   console.log("Users have been registered successfully")
+    // }, error=>{
+    //   console.log(error);
+    // });
   }
   cancel(){
     this.CancelRegister.emit(false);
@@ -24,6 +29,20 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      userName: new FormControl('',
+        [Validators.required, 
+        Validators.minLength(4),
+        Validators.maxLength(6)
+      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
+      confirmPassword: new FormControl('', [Validators.required]),
+    }, this.passwordMatchValidator);
+  }
+
+  passwordMatchValidator(g:FormGroup){
+    return g.get('password').value === g.get('confirmPassword').value ? null : {'mismatch': true};
   }
 
 }

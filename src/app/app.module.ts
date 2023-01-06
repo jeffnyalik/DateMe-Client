@@ -16,6 +16,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { FileUploadModule } from 'ng2-file-upload';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './error.inceptor';
@@ -36,7 +38,6 @@ import { PhotoEditorComponent } from './components/photo-editor/photo-editor.com
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { AlertifyService } from './services/alerts/alertify.service';
-
 
 
 export function tokenGetter(){
@@ -71,6 +72,7 @@ export function tokenGetter(){
     NgxGalleryModule,
     MatProgressSpinnerModule,
     FileUploadModule,
+    BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {

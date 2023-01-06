@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { validateVerticalPosition } from '@angular/cdk/overlay';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -30,11 +29,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      userName: new FormControl('',
-        [Validators.required, 
-        Validators.minLength(4),
-        Validators.maxLength(6)
-      ]),
+      gender: new FormControl('male'),
+      knownAs: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
+      dateofBirth: new FormControl('', [Validators.required]),
+      userName: new FormControl('', [Validators.required,Validators.minLength(4),Validators.maxLength(6)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
       confirmPassword: new FormControl('', [Validators.required]),

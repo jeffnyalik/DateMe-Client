@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
+import Swal  from 'sweetalert2';
+
+import { User } from '../../_models/user';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -13,14 +17,31 @@ export class RegisterComponent implements OnInit {
   @Output() CancelRegister = new EventEmitter();
   registerForm: FormGroup;
   model:any = {};
-  constructor(private authService:AuthService) { }
+  user: User;
+  constructor(private authService:AuthService, private router: Router) { }
   register(){
-    console.log(this.registerForm.value);
-    // this.authService.register(this.model).subscribe((res) =>{
-    //   console.log("Users have been registered successfully")
-    // }, error=>{
-    //   console.log(error);
-    // });
+    if(this.registerForm.invalid){
+      console.log("The form is Invalid");
+      return
+    }
+    this.user = Object.assign({}, this.registerForm.value)
+    this.authService.register(this.user).subscribe((res) =>{
+      console.log(res);
+      Swal.fire({
+        text: "Registered Successfully",
+        icon: 'success'
+      })
+    }, error=>{
+      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        text: 'An error has occured'
+      })
+    }, () =>{
+      this.authService.login(this.user).subscribe(() =>{
+        this.router.navigate(['/members']);
+      })
+    });
   }
   cancel(){
     this.CancelRegister.emit(false);
@@ -33,8 +54,8 @@ export class RegisterComponent implements OnInit {
       knownAs: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
-      dateofBirth: new FormControl('', [Validators.required]),
-      userName: new FormControl('', [Validators.required,Validators.minLength(4),Validators.maxLength(6)]),
+      dateOfBirth: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required,Validators.minLength(4),Validators.maxLength(6)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
       confirmPassword: new FormControl('', [Validators.required]),

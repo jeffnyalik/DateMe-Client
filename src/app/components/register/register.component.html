@@ -20,16 +20,16 @@
         <label for="Username">Username</label>
         <input type="text"
           class="form-control"
-          [ngClass]="{'is-invalid': registerForm.get('userName').errors && registerForm.get('userName').touched}"
-         formControlName="userName" placeholder="Username">
+          [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}"
+         formControlName="username" placeholder="Username">
 
-        <div class="invalid-feedback" *ngIf="registerForm.get('userName').hasError('required')"
+        <div class="invalid-feedback" *ngIf="registerForm.get('username').hasError('required')"
         >Username is required</div>
 
-        <div class="invalid-feedback" *ngIf="registerForm.get('userName').hasError('minlength')"
+        <div class="invalid-feedback" *ngIf="registerForm.get('username').hasError('minlength')"
          >username can have atleast 4 characters</div>
 
-         <div class="invalid-feedback" *ngIf="registerForm.get('userName').hasError('maxlength')">
+         <div class="invalid-feedback" *ngIf="registerForm.get('username').hasError('maxlength')">
           username can not exceed 6 characters
         </div>
         </div>
@@ -105,9 +105,9 @@
         <label for="Username">Date Of Birth</label>
         <input type="text"
           class="form-control"
-          [ngClass]="{'is-invalid': registerForm.get('dateofBirth').errors && registerForm.get('dateofBirth').touched}"
-         formControlName="dateofBirth" type="text" bsDatepicker>
-        <div class="invalid-feedback" *ngIf="registerForm.get('dateofBirth').hasError('required')"
+          [ngClass]="{'is-invalid': registerForm.get('dateOfBirth').errors && registerForm.get('dateOfBirth').touched}"
+         formControlName="dateOfBirth" type="text" bsDatepicker>
+        <div class="invalid-feedback" *ngIf="registerForm.get('dateOfBirth').hasError('required')"
         >Field is required</div>
         </div>
     </div>
